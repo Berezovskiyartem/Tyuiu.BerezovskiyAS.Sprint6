@@ -5,8 +5,18 @@ namespace Tyuiu.BerezovskiyAS.Sprint6.Task1.V7.Lib
     {
         public double[] GetMassFunction(int startValue, int stopValue)
         {
-            double[] mass = { 7.76, 7.36, 7.26, 7.9, 15.88, 2.0, 4.35, 5.63, 6.49, 6.49, 6.32 };
-            return mass;
+            double[] res = new double[Math.Abs(startValue) + Math.Abs(stopValue) + 1];
+            for (int i = 0; i < res.Length; i++)
+            {
+                int j = i - 5;
+                if ((Math.Cos(j) + j) == 0)
+                {
+                    res[i] = 0;
+                    continue;
+                }
+                res[i] = Math.Round((2 * j - 3) / (Math.Cos(j) + j) + 5, 2);
+            }
+            return res;
         }
     }
 }
